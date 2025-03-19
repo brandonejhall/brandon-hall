@@ -37,7 +37,7 @@ const TerminalContent: React.FC = () => {
   };
   
   const returnToMenu = () => {
-    setActiveSection(Section.MENU);
+    handleSectionClick(Section.MENU, 'ls sections/');
   };
 
   return (

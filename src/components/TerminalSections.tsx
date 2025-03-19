@@ -48,7 +48,7 @@ export const ExperienceSection: React.FC<SectionProps> = ({ returnToMenu }) => {
       
       <div className="mt-6">
         <button onClick={returnToMenu} className="terminal-link">
-          brandon@hall:~$ cd ..
+          brandon@hall:~$ ls sections/
         </button>
       </div>
     </div>
@@ -95,7 +95,7 @@ export const ProjectsSection: React.FC<SectionProps> = ({ returnToMenu }) => {
       
       <div className="mt-6">
         <button onClick={returnToMenu} className="terminal-link">
-          brandon@hall:~$ cd ..
+          brandon@hall:~$ ls sections/
         </button>
       </div>
     </div>
@@ -151,7 +151,7 @@ export const SkillsSection: React.FC<SectionProps> = ({ returnToMenu }) => {
       
       <div className="mt-6">
         <button onClick={returnToMenu} className="terminal-link">
-          brandon@hall:~$ cd ..
+          brandon@hall:~$ ls sections/
         </button>
       </div>
     </div>
