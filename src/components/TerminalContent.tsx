@@ -35,9 +35,15 @@ const TerminalContent: React.FC = () => {
     
     typeCommand(0);
   };
-  
-  const returnToMenu = () => {
-    handleSectionClick(Section.MENU, 'ls sections/');
+
+  // Command strings for each section
+  const getCommandForSection = (section: Section): string => {
+    switch(section) {
+      case Section.EXPERIENCE: return 'cat Experience.md';
+      case Section.PROJECTS: return 'cat Projects.md';
+      case Section.SKILLS: return 'cat Skills.md';
+      default: return 'ls sections/';
+    }
   };
 
   return (
@@ -51,56 +57,44 @@ const TerminalContent: React.FC = () => {
       {/* ASCII Portrait */}
       <ASCIIPortrait />
       
-      {/* Section Selection Menu */}
-      {activeSection === Section.MENU && (
-        <>
-          <div className="command-prompt mb-2">brandon@hall:~$ ls sections/</div>
-          <div className="flex flex-wrap justify-center mb-4">
-            <button 
-              className="section-button"
-              onClick={() => handleSectionClick(Section.EXPERIENCE, 'cat Experience.md')}
-            >
-              [Experience]
-            </button>
-            <button 
-              className="section-button"
-              onClick={() => handleSectionClick(Section.PROJECTS, 'cat Projects.md')}
-            >
-              [Projects]
-            </button>
-            <button 
-              className="section-button"
-              onClick={() => handleSectionClick(Section.SKILLS, 'cat Skills.md')}
-            >
-              [Skills]
-            </button>
-          </div>
-          <div className="command-prompt cursor">
-            brandon@hall:~$ {isTyping ? typedCommand : ''}
-          </div>
-        </>
-      )}
+      {/* Navigation Menu - Always Visible */}
+      <div className="flex flex-wrap justify-center mb-4">
+        <button 
+          className={`section-button ${activeSection === Section.EXPERIENCE ? 'active' : ''}`}
+          onClick={() => handleSectionClick(Section.EXPERIENCE, getCommandForSection(Section.EXPERIENCE))}
+        >
+          [Experience]
+        </button>
+        <button 
+          className={`section-button ${activeSection === Section.PROJECTS ? 'active' : ''}`}
+          onClick={() => handleSectionClick(Section.PROJECTS, getCommandForSection(Section.PROJECTS))}
+        >
+          [Projects]
+        </button>
+        <button 
+          className={`section-button ${activeSection === Section.SKILLS ? 'active' : ''}`}
+          onClick={() => handleSectionClick(Section.SKILLS, getCommandForSection(Section.SKILLS))}
+        >
+          [Skills]
+        </button>
+      </div>
+      
+      {/* Command Line */}
+      <div className="command-prompt mb-4">
+        brandon@hall:~$ {isTyping ? typedCommand : getCommandForSection(activeSection)}
+      </div>
       
       {/* Section Content */}
       {activeSection === Section.EXPERIENCE && (
-        <>
-          <div className="command-prompt mb-4">brandon@hall:~$ cat Experience.md</div>
-          <ExperienceSection returnToMenu={returnToMenu} />
-        </>
+        <ExperienceSection />
       )}
       
       {activeSection === Section.PROJECTS && (
-        <>
-          <div className="command-prompt mb-4">brandon@hall:~$ cat Projects.md</div>
-          <ProjectsSection returnToMenu={returnToMenu} />
-        </>
+        <ProjectsSection />
       )}
       
       {activeSection === Section.SKILLS && (
-        <>
-          <div className="command-prompt mb-4">brandon@hall:~$ cat Skills.md</div>
-          <SkillsSection returnToMenu={returnToMenu} />
-        </>
+        <SkillsSection />
       )}
     </div>
   );

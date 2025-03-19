@@ -2,11 +2,7 @@
 import React from 'react';
 import SkillBar from './SkillBar';
 
-interface SectionProps {
-  returnToMenu: () => void;
-}
-
-export const ExperienceSection: React.FC<SectionProps> = ({ returnToMenu }) => {
+export const ExperienceSection: React.FC = () => {
   return (
     <div className="command-output animate-fade-in">
       <h1 className="section-title text-xl mb-6"># WORK EXPERIENCE</h1>
@@ -45,17 +41,11 @@ export const ExperienceSection: React.FC<SectionProps> = ({ returnToMenu }) => {
           <li>Optimized database queries, reducing average page load time by 40%.</li>
         </ul>
       </div>
-      
-      <div className="mt-6">
-        <button onClick={returnToMenu} className="terminal-link">
-          brandon@hall:~$ ls sections/
-        </button>
-      </div>
     </div>
   );
 };
 
-export const ProjectsSection: React.FC<SectionProps> = ({ returnToMenu }) => {
+export const ProjectsSection: React.FC = () => {
   return (
     <div className="command-output animate-fade-in">
       <h1 className="section-title text-xl mb-6"># PROJECTS</h1>
@@ -92,17 +82,11 @@ export const ProjectsSection: React.FC<SectionProps> = ({ returnToMenu }) => {
           <li>Ensured ACID compliance for all database transactions with proper error handling and rollback mechanisms.</li>
         </ul>
       </div>
-      
-      <div className="mt-6">
-        <button onClick={returnToMenu} className="terminal-link">
-          brandon@hall:~$ ls sections/
-        </button>
-      </div>
     </div>
   );
 };
 
-export const SkillsSection: React.FC<SectionProps> = ({ returnToMenu }) => {
+export const SkillsSection: React.FC = () => {
   return (
     <div className="command-output animate-fade-in">
       <h1 className="section-title text-xl mb-6"># TECHNICAL SKILLS</h1>
@@ -147,12 +131,6 @@ export const SkillsSection: React.FC<SectionProps> = ({ returnToMenu }) => {
           <SkillBar name="Redis" percentage={65} delay={1700} />
           <SkillBar name="Oracle" percentage={80} delay={1800} />
         </div>
-      </div>
-      
-      <div className="mt-6">
-        <button onClick={returnToMenu} className="terminal-link">
-          brandon@hall:~$ ls sections/
-        </button>
       </div>
     </div>
   );
