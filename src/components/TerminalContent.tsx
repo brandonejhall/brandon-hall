@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import ASCIIPortrait from './ASCIIPortrait';
+import SortingVisualizer from './SortingVisualizer';
 import { ExperienceSection, ProjectsSection, SkillsSection } from './TerminalSections';
 
 enum Section {
@@ -50,7 +50,19 @@ const TerminalContent: React.FC = () => {
         <p>Explore my experience, projects, and skills using the navigation buttons below.</p>
       </div>
       
-      <ASCIIPortrait />
+      <SortingVisualizer />
+      
+      <div className="text-center mt-4 mb-4">
+        <div className="text-terminal-green-light font-bold text-xl mb-1">BRANDON HALL</div>
+        <div className="text-terminal-green mb-1">Software Engineer</div>
+        <div className="text-terminal-gray text-sm mb-2">Kingston, Jamaica</div>
+        <div className="text-terminal-gray text-sm max-w-md mx-auto">
+          I'm a Software Engineer specializing in backend development, cloud computing, and scalable systems. 
+          With expertise in Java, Python, and TypeScript, I build high-performance applications using Spring Boot, 
+          FastAPI, and PostgreSQL. Passionate about system design and innovation, I aim to create AI-powered 
+          solutions and blockchain-based financial systems.
+        </div>
+      </div>
       
       <div className="flex flex-wrap justify-center mb-4">
         <button 
