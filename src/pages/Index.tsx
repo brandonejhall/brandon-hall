@@ -29,17 +29,6 @@ const Index = () => {
           iterations: 1
         });
         
-        // Trigger a re-sort or special effect on the visualizer
-        const resetButton = document.querySelector('.sorting-visualizer button:first-of-type') as HTMLButtonElement;
-        const sortButton = document.querySelector('.sorting-visualizer button:last-of-type') as HTMLButtonElement;
-        
-        if (resetButton && sortButton) {
-          resetButton.click();
-          setTimeout(() => {
-            sortButton.click();
-          }, 500);
-        }
-        
         // Remove the class after the animation
         setTimeout(() => {
           visualizerElement.classList.remove('konami-active');
