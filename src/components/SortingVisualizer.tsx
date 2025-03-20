@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 
 type SortingAlgorithm = 'bubble' | 'insertion' | 'quick';
@@ -10,14 +9,14 @@ const SortingVisualizer: React.FC = () => {
   const [algorithm, setAlgorithm] = useState<SortingAlgorithm>('bubble');
   const [animationFrameId, setAnimationFrameId] = useState<number | null>(null);
   const [sortingTimeout, setSortingTimeout] = useState<NodeJS.Timeout | null>(null);
+  const [autoSortComplete, setAutoSortComplete] = useState<boolean>(false);
 
-  // Generate random array
+  // Generate random array with fewer bars (max 10)
   const generateArray = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     
-    const width = canvas.width;
-    const size = Math.min(50, Math.floor(width / 10)); // Adjust number of bars based on width
+    const size = 10; // Fixed size of 10 bars
     const newArray = Array.from({ length: size }, () => Math.floor(Math.random() * 100) + 5);
     setArray(newArray);
     drawArray(newArray);
@@ -63,13 +62,10 @@ const SortingVisualizer: React.FC = () => {
     
     for (let i = 0; i < arrCopy.length; i++) {
       for (let j = 0; j < arrCopy.length - i - 1; j++) {
-        // Add frame to show comparison
         animations.push({ array: [...arrCopy], highlights: [j, j + 1] });
         
         if (arrCopy[j] > arrCopy[j + 1]) {
-          // Swap elements
           [arrCopy[j], arrCopy[j + 1]] = [arrCopy[j + 1], arrCopy[j]];
-          // Add frame to show swap
           animations.push({ array: [...arrCopy], highlights: [j, j + 1] });
         }
       }
@@ -85,10 +81,11 @@ const SortingVisualizer: React.FC = () => {
         const timeoutId = setTimeout(() => {
           const frameId = requestAnimationFrame(animate);
           setAnimationFrameId(frameId);
-        }, 50); // Slow down animation for visibility
+        }, 50);
         setSortingTimeout(timeoutId);
       } else {
         setSorting(false);
+        setAutoSortComplete(true);
       }
     };
     
@@ -132,6 +129,7 @@ const SortingVisualizer: React.FC = () => {
         setSortingTimeout(timeoutId);
       } else {
         setSorting(false);
+        setAutoSortComplete(true);
       }
     };
     
@@ -150,19 +148,19 @@ const SortingVisualizer: React.FC = () => {
       let i = low - 1;
       
       for (let j = low; j < high; j++) {
-        animations.push({ array: [...arr], highlights: [j, high] }); // Compare j with pivot
+        animations.push({ array: [...arr], highlights: [j, high] });
         
         if (arr[j] <= pivot) {
           i++;
-          [arr[i], arr[j]] = [arr[j], arr[i]]; // Swap
-          animations.push({ array: [...arr], highlights: [i, j] }); // Show swap
+          [arr[i], arr[j]] = [arr[j], arr[i]];
+          animations.push({ array: [...arr], highlights: [i, j] });
         }
       }
       
-      [arr[i + 1], arr[high]] = [arr[high], arr[i + 1]]; // Swap pivot
-      animations.push({ array: [...arr], highlights: [i + 1, high] }); // Show pivot swap
+      [arr[i + 1], arr[high]] = [arr[high], arr[i + 1]];
+      animations.push({ array: [...arr], highlights: [i + 1, high] });
       
-      return i + 1; // Return pivot index
+      return i + 1;
     };
     
     const quickSortRecursive = (arr: number[], low: number, high: number) => {
@@ -190,35 +188,50 @@ const SortingVisualizer: React.FC = () => {
         setSortingTimeout(timeoutId);
       } else {
         setSorting(false);
+        setAutoSortComplete(true);
       }
     };
     
     animate();
   };
 
-  // Start sorting with selected algorithm
-  const startSorting = () => {
-    if (sorting) return;
-    
-    setSorting(true);
-    
-    switch (algorithm) {
-      case 'bubble':
-        bubbleSort();
-        break;
-      case 'insertion':
-        insertionSort();
-        break;
-      case 'quick':
-        quickSort();
-        break;
-      default:
-        bubbleSort();
-    }
-  };
-
-  // Clean up animation frame on component unmount
+  // Auto cycle through sorting algorithms
   useEffect(() => {
+    if (autoSortComplete) {
+      setAutoSortComplete(false);
+      // Cycle to the next algorithm
+      const nextAlgo = algorithm === 'bubble' 
+        ? 'insertion' 
+        : algorithm === 'insertion' 
+          ? 'quick' 
+          : 'bubble';
+      
+      // Set a timeout to allow a brief pause before next sort
+      const timeoutId = setTimeout(() => {
+        setAlgorithm(nextAlgo);
+        generateArray();
+        setSorting(true);
+        
+        // Start the next sort algorithm
+        if (nextAlgo === 'bubble') {
+          bubbleSort();
+        } else if (nextAlgo === 'insertion') {
+          insertionSort();
+        } else {
+          quickSort();
+        }
+      }, 1000); // 1-second pause between sorts
+      
+      setSortingTimeout(timeoutId);
+    }
+  }, [autoSortComplete, algorithm]);
+
+  // Start the auto-sorting cycle when component mounts
+  useEffect(() => {
+    generateArray();
+    setSorting(true);
+    bubbleSort();
+    
     return () => {
       if (animationFrameId) {
         cancelAnimationFrame(animationFrameId);
@@ -227,7 +240,7 @@ const SortingVisualizer: React.FC = () => {
         clearTimeout(sortingTimeout);
       }
     };
-  }, [animationFrameId, sortingTimeout]);
+  }, []);
 
   // Handle canvas resize and redraw
   useEffect(() => {
@@ -238,9 +251,9 @@ const SortingVisualizer: React.FC = () => {
       const container = canvas.parentElement;
       if (!container) return;
       
-      // Set canvas size to match container
+      // Set canvas size to match container but keep height smaller
       canvas.width = container.clientWidth;
-      canvas.height = Math.min(300, window.innerHeight * 0.4);
+      canvas.height = Math.min(200, window.innerHeight * 0.3); // Make the visualization smaller
       
       // Redraw array with new dimensions
       if (array.length) {
@@ -258,51 +271,14 @@ const SortingVisualizer: React.FC = () => {
     };
   }, [array]);
 
-  // Initialize array when component mounts
-  useEffect(() => {
-    generateArray();
-  }, []);
-
   return (
     <div className="sorting-visualizer">
       <div className="command-prompt mb-2">brandon@hall:~$ generate-visualization --type=sorting</div>
       <div className="canvas-container">
         <canvas ref={canvasRef} />
       </div>
-      <div className="controls mt-4 flex justify-center space-x-4">
-        <button 
-          className="control-button"
-          onClick={() => {
-            if (animationFrameId) {
-              cancelAnimationFrame(animationFrameId);
-            }
-            if (sortingTimeout) {
-              clearTimeout(sortingTimeout);
-            }
-            setSorting(false);
-            generateArray();
-          }}
-          disabled={sorting}
-        >
-          Reset
-        </button>
-        <select 
-          className="algorithm-select"
-          value={algorithm}
-          onChange={(e) => setAlgorithm(e.target.value as SortingAlgorithm)}
-          disabled={sorting}
-        >
-          <option value="bubble">Bubble Sort</option>
-          <option value="insertion">Insertion Sort</option>
-          <option value="quick">Quick Sort</option>
-        </select>
-        <button 
-          className="control-button"
-          onClick={startSorting}
-          disabled={sorting}
-        >
-          Sort
-        </button>
+      <div className="text-center text-xs text-terminal-gray mt-2">
+        Algorithm: {algorithm.charAt(0).toUpperCase() + algorithm.slice(1)} Sort
       </div>
     </div>
   );
