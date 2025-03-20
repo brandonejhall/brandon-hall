@@ -71,10 +71,11 @@ const ASCIIPortrait: React.FC = () => {
       <div className="text-center mt-4">
         <div className="text-terminal-green-light font-bold text-xl mb-1">BRANDON HALL</div>
         <div className="text-terminal-green mb-1">Software Engineer</div>
-        <div className="text-terminal-gray text-sm mb-2">Saint Catherine, Jamaica</div>
+        <div className="text-terminal-gray text-sm mb-2">Kingston, Jamaica</div>
         <div className="text-terminal-gray text-sm max-w-md">
-          AWS Certified Cloud Practitioner with experience in full-stack development,
-          specializing in Spring Boot, AWS, and database optimization.
+          Software Engineer specializing in full-stack development with Spring Boot, PL/SQL, and modern web technologies, 
+          currently developing banking systems and APIs. AWS Certified Cloud Practitioner with experience in Vue.js, Java, 
+          and Python, focused on creating efficient solutions for complex problems.
         </div>
       </div>
     </div>

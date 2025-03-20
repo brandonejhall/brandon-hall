@@ -51,7 +51,9 @@ const TerminalContent: React.FC = () => {
       {/* Introduction */}
       <div className="command-prompt mb-2">brandon@hall:~$ cat intro.txt</div>
       <div className="command-output mb-6">
-        Welcome to my terminal portfolio
+        <p className="mb-2">Welcome to my terminal portfolio!</p>
+        <p className="mb-2">I'm a Software Engineer specializing in full-stack development with Spring Boot, PL/SQL, and modern web technologies.</p>
+        <p>Explore my experience, projects, and skills using the navigation buttons below.</p>
       </div>
       
       {/* ASCII Portrait */}
