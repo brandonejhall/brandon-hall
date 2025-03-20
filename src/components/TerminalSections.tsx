@@ -91,47 +91,58 @@ export const SkillsSection: React.FC = () => {
     <div className="command-output animate-fade-in">
       <h1 className="section-title text-xl mb-6"># TECHNICAL SKILLS</h1>
       
-      <div className="mb-6">
-        <h2 className="text-terminal-green-light font-bold mb-3">## Languages</h2>
-        <div className="space-y-2">
-          <SkillBar name="Java" percentage={90} delay={100} />
-          <SkillBar name="Python" percentage={85} delay={200} />
-          <SkillBar name="TypeScript" percentage={80} delay={300} />
-          <SkillBar name="JavaScript" percentage={80} delay={400} />
-          <SkillBar name="SQL" percentage={90} delay={500} />
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+        <div className="skill-category">
+          <h2 className="text-terminal-green-light font-bold mb-3">## Programming Languages</h2>
+          <div className="flex flex-wrap gap-2">
+            <span className="skill-tag">Java</span>
+            <span className="skill-tag">Python</span>
+            <span className="skill-tag">TypeScript</span>
+            <span className="skill-tag">JavaScript</span>
+            <span className="skill-tag">SQL</span>
+          </div>
+        </div>
+        
+        <div className="skill-category">
+          <h2 className="text-terminal-green-light font-bold mb-3">## Frontend Technologies</h2>
+          <div className="flex flex-wrap gap-2">
+            <span className="skill-tag">React</span>
+            <span className="skill-tag">React Native</span>
+            <span className="skill-tag">Vue.js</span>
+            <span className="skill-tag">HTML</span>
+            <span className="skill-tag">CSS</span>
+          </div>
+        </div>
+        
+        <div className="skill-category">
+          <h2 className="text-terminal-green-light font-bold mb-3">## Backend Technologies</h2>
+          <div className="flex flex-wrap gap-2">
+            <span className="skill-tag">Spring Boot</span>
+            <span className="skill-tag">Flask</span>
+            <span className="skill-tag">FastAPI</span>
+            <span className="skill-tag">Node.js</span>
+          </div>
+        </div>
+        
+        <div className="skill-category">
+          <h2 className="text-terminal-green-light font-bold mb-3">## Database Technologies</h2>
+          <div className="flex flex-wrap gap-2">
+            <span className="skill-tag">PostgreSQL</span>
+            <span className="skill-tag">Oracle SQL</span>
+          </div>
+        </div>
+        
+        <div className="skill-category">
+          <h2 className="text-terminal-green-light font-bold mb-3">## Cloud & DevOps</h2>
+          <div className="flex flex-wrap gap-2">
+            <span className="skill-tag">AWS Lambda</span>
+            <span className="skill-tag">AWS Services</span>
+            <span className="skill-tag">Git</span>
+            <span className="skill-tag">Unix</span>
+          </div>
         </div>
       </div>
       
-      <div className="mb-6">
-        <h2 className="text-terminal-green-light font-bold mb-3">## Frameworks & Libraries</h2>
-        <div className="space-y-2">
-          <SkillBar name="Spring Boot" percentage={85} delay={600} />
-          <SkillBar name="Vue.js" percentage={75} delay={700} />
-          <SkillBar name="Flask" percentage={75} delay={800} />
-          <SkillBar name="FastAPI" percentage={70} delay={900} />
-          <SkillBar name="React" percentage={65} delay={1000} />
-        </div>
-      </div>
-      
-      <div className="mb-6">
-        <h2 className="text-terminal-green-light font-bold mb-3">## Cloud & Tools</h2>
-        <div className="space-y-2">
-          <SkillBar name="AWS" percentage={80} delay={1100} />
-          <SkillBar name="Git" percentage={85} delay={1200} />
-          <SkillBar name="Unix" percentage={75} delay={1300} />
-          <SkillBar name="Docker" percentage={65} delay={1400} />
-        </div>
-      </div>
-      
-      <div className="mb-6">
-        <h2 className="text-terminal-green-light font-bold mb-3">## Databases</h2>
-        <div className="space-y-2">
-          <SkillBar name="PostgreSQL" percentage={85} delay={1500} />
-          <SkillBar name="Oracle" percentage={80} delay={1600} />
-          <SkillBar name="MongoDB" percentage={65} delay={1700} />
-        </div>
-      </div>
-
       <div className="mb-6">
         <h2 className="text-terminal-green-light font-bold mb-3">## Education</h2>
         <div className="text-terminal-gray pl-4 mb-3">

@@ -73,9 +73,9 @@ const ASCIIPortrait: React.FC = () => {
         <div className="text-terminal-green mb-1">Software Engineer</div>
         <div className="text-terminal-gray text-sm mb-2">Kingston, Jamaica</div>
         <div className="text-terminal-gray text-sm max-w-md">
-          Software Engineer specializing in full-stack development with Spring Boot, PL/SQL, and modern web technologies, 
-          currently developing banking systems and APIs. AWS Certified Cloud Practitioner with experience in Vue.js, Java, 
-          and Python, focused on creating efficient solutions for complex problems.
+          Software Engineer specializing in backend development, cloud computing, and scalable systems. 
+          Building high-performance applications with Spring Boot, FastAPI, and PostgreSQL. 
+          AWS Certified Cloud Practitioner focused on creating efficient solutions for complex problems.
         </div>
       </div>
     </div>

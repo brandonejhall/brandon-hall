@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import ASCIIPortrait from './ASCIIPortrait';
 import { ExperienceSection, ProjectsSection, SkillsSection } from './TerminalSections';
@@ -16,7 +15,6 @@ const TerminalContent: React.FC = () => {
   const [isTyping, setIsTyping] = useState<boolean>(false);
   
   const handleSectionClick = (section: Section, command: string) => {
-    // Simulate typing effect
     setIsTyping(true);
     setTypedCommand('');
     
@@ -25,7 +23,6 @@ const TerminalContent: React.FC = () => {
         setTypedCommand(command.substring(0, index));
         setTimeout(() => typeCommand(index + 1), 50);
       } else {
-        // Command completed, show section after a brief delay
         setTimeout(() => {
           setIsTyping(false);
           setActiveSection(section);
@@ -36,7 +33,6 @@ const TerminalContent: React.FC = () => {
     typeCommand(0);
   };
 
-  // Command strings for each section
   const getCommandForSection = (section: Section): string => {
     switch(section) {
       case Section.EXPERIENCE: return 'cat Experience.md';
@@ -48,18 +44,15 @@ const TerminalContent: React.FC = () => {
 
   return (
     <div className="terminal-content">
-      {/* Introduction */}
       <div className="command-prompt mb-2">brandon@hall:~$ cat intro.txt</div>
       <div className="command-output mb-6">
         <p className="mb-2">Welcome to my terminal portfolio!</p>
-        <p className="mb-2">I'm a Software Engineer specializing in full-stack development with Spring Boot, PL/SQL, and modern web technologies.</p>
+        <p className="mb-2">I'm a Software Engineer specializing in backend development, cloud computing, and scalable systems. With expertise in Java, Python, and TypeScript, I build high-performance applications using Spring Boot, FastAPI, and PostgreSQL. Passionate about system design and innovation, I aim to create AI-powered solutions and blockchain-based financial systems.</p>
         <p>Explore my experience, projects, and skills using the navigation buttons below.</p>
       </div>
       
-      {/* ASCII Portrait */}
       <ASCIIPortrait />
       
-      {/* Navigation Menu - Always Visible */}
       <div className="flex flex-wrap justify-center mb-4">
         <button 
           className={`section-button ${activeSection === Section.EXPERIENCE ? 'active' : ''}`}
@@ -81,12 +74,10 @@ const TerminalContent: React.FC = () => {
         </button>
       </div>
       
-      {/* Command Line */}
       <div className="command-prompt mb-4">
         brandon@hall:~$ {isTyping ? typedCommand : getCommandForSection(activeSection)}
       </div>
       
-      {/* Section Content */}
       {activeSection === Section.EXPERIENCE && (
         <ExperienceSection />
       )}

@@ -1,43 +1,19 @@
 
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 
 interface SkillBarProps {
   name: string;
-  percentage: number;
+  percentage?: number;
   delay?: number;
 }
 
-const SkillBar: React.FC<SkillBarProps> = ({ name, percentage, delay = 0 }) => {
-  const [visible, setVisible] = useState(false);
-  const skillRef = useRef<HTMLDivElement>(null);
-  
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setVisible(true);
-    }, delay);
-    
-    return () => clearTimeout(timer);
-  }, [delay]);
-  
-  // Generate the visual bar representation
-  const generateBar = () => {
-    const filledBoxes = Math.floor(percentage / 10);
-    const emptyBoxes = 10 - filledBoxes;
-    
-    return `[${'█'.repeat(filledBoxes)}${'░'.repeat(emptyBoxes)}] ${percentage}%`;
-  };
-
+const SkillBar: React.FC<SkillBarProps> = ({ name, percentage = 0, delay = 0 }) => {
+  // Component kept for backward compatibility but no longer used with percentages
   return (
     <div className="mb-4 flex flex-col md:flex-row md:items-center">
       <div className="w-24 font-semibold text-terminal-green truncate mr-4">{name}</div>
-      <div className="flex-1 font-mono tracking-wider text-terminal-green-light" ref={skillRef}>
-        <div className="skill-bar-container">
-          <div 
-            className="skill-bar-fill" 
-            style={{ width: visible ? `${percentage}%` : '0%' }}
-          ></div>
-        </div>
-        <div className="mt-1 text-sm">{generateBar()}</div>
+      <div className="flex-1 font-mono tracking-wider text-terminal-green-light">
+        <span className="skill-tag">{name}</span>
       </div>
     </div>
   );
