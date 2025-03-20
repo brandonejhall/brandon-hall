@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import SortingVisualizer from './SortingVisualizer';
 import { ExperienceSection, ProjectsSection, SkillsSection } from './TerminalSections';
@@ -45,6 +46,9 @@ const TerminalContent: React.FC = () => {
   return (
     <div className="terminal-content">
       <div className="command-prompt mb-2">brandon@hall:~$ cat intro.txt</div>
+      <div className="command-output mb-6">
+        <p>Explore my experience, projects, and skills using the navigation buttons below.</p>
+      </div>
       
       <SortingVisualizer />
       
