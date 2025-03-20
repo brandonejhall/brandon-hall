@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import ASCIIPortrait from './ASCIIPortrait';
 import { ExperienceSection, ProjectsSection, SkillsSection } from './TerminalSections';
@@ -46,8 +47,6 @@ const TerminalContent: React.FC = () => {
     <div className="terminal-content">
       <div className="command-prompt mb-2">brandon@hall:~$ cat intro.txt</div>
       <div className="command-output mb-6">
-        <p className="mb-2">Welcome to my terminal portfolio!</p>
-        <p className="mb-2">I'm a Software Engineer specializing in backend development, cloud computing, and scalable systems. With expertise in Java, Python, and TypeScript, I build high-performance applications using Spring Boot, FastAPI, and PostgreSQL. Passionate about system design and innovation, I aim to create AI-powered solutions and blockchain-based financial systems.</p>
         <p>Explore my experience, projects, and skills using the navigation buttons below.</p>
       </div>
       

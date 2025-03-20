@@ -8,7 +8,7 @@ export const ExperienceSection: React.FC = () => {
       <h1 className="section-title text-xl mb-6"># WORK EXPERIENCE</h1>
       
       <div className="mb-8">
-        <h2 className="text-terminal-green-light font-bold mb-1">## Banking Systems Developer (Sep 2023 – Present)</h2>
+        <h2 className="text-terminal-green-light font-bold mb-1">## Financial Institution (Sep 2023 – Present)</h2>
         <p className="text-terminal-green mb-2">&gt; Software Developer | Kingston, Jamaica</p>
         <ul className="list-disc list-inside space-y-2 text-terminal-gray pl-4">
           <li>Perform real-time monitoring and issue resolution for core banking systems using SQL and Unix-based applications.</li>
@@ -21,7 +21,7 @@ export const ExperienceSection: React.FC = () => {
       </div>
       
       <div className="mb-8">
-        <h2 className="text-terminal-green-light font-bold mb-1">## Agile Lab Intern (May 2023 – Sep 2023)</h2>
+        <h2 className="text-terminal-green-light font-bold mb-1">## Financial Institution (May 2023 – Sep 2023)</h2>
         <p className="text-terminal-green mb-2">&gt; Research & Development | Kingston, Jamaica</p>
         <ul className="list-disc list-inside space-y-2 text-terminal-gray pl-4">
           <li>Gained exposure to Web Development, Data Analysis, and Agile Methodologies.</li>
@@ -32,7 +32,7 @@ export const ExperienceSection: React.FC = () => {
       </div>
       
       <div className="mb-8">
-        <h2 className="text-terminal-green-light font-bold mb-1">## Software Development Intern (May 2022 – May 2023)</h2>
+        <h2 className="text-terminal-green-light font-bold mb-1">## Software Development Firm (May 2022 – May 2023)</h2>
         <p className="text-terminal-green mb-2">&gt; Technology Solutions | Kingston, Jamaica</p>
         <ul className="list-disc list-inside space-y-2 text-terminal-gray pl-4">
           <li>Developed responsive frontend interfaces using Vue.js, HTML, and CSS.</li>
@@ -51,7 +51,9 @@ export const ProjectsSection: React.FC = () => {
       <h1 className="section-title text-xl mb-6"># PROJECTS</h1>
       
       <div className="mb-8">
-        <h2 className="text-terminal-green-light font-bold mb-1">## Workout Tracking App <span className="text-blue-400">[Code]</span></h2>
+        <h2 className="text-terminal-green-light font-bold mb-1">
+          ## Workout Tracking App <a href="https://github.com/ColdCoffeeBeans/Ephyris-engine" target="_blank" rel="noopener noreferrer" className="text-blue-400">[Code]</a>
+        </h2>
         <p className="text-terminal-green mb-3">&gt; Spring Boot, PostgreSQL, React Native (Expo)</p>
         <ul className="list-disc list-inside space-y-2 text-terminal-gray pl-4">
           <li>Developing a mobile application that helps users log, monitor, and analyze their fitness activities.</li>
@@ -62,7 +64,9 @@ export const ProjectsSection: React.FC = () => {
       </div>
       
       <div className="mb-8">
-        <h2 className="text-terminal-green-light font-bold mb-1">## SafeZone <span className="text-blue-400">[Live Demo]</span></h2>
+        <h2 className="text-terminal-green-light font-bold mb-1">
+          ## SafeZone <a href="https://github.com/ColinACampbell/safezone-frontend" target="_blank" rel="noopener noreferrer" className="text-blue-400">[Code]</a>
+        </h2>
         <p className="text-terminal-green mb-3">&gt; Flutter, FastAPI, PostgreSQL</p>
         <ul className="list-disc list-inside space-y-2 text-terminal-gray pl-4">
           <li>Designed and developed a mobile application with geofencing and alert features for personal safety.</li>
@@ -73,7 +77,9 @@ export const ProjectsSection: React.FC = () => {
       </div>
       
       <div className="mb-8">
-        <h2 className="text-terminal-green-light font-bold mb-1">## UWI Career Services Platform <span className="text-blue-400">[Code]</span></h2>
+        <h2 className="text-terminal-green-light font-bold mb-1">
+          ## UWI Career Services Platform <a href="https://github.com/brandonejhall/UWI-Career-Services-and-Placement-Booking-Platform" target="_blank" rel="noopener noreferrer" className="text-blue-400">[Code]</a>
+        </h2>
         <p className="text-terminal-green mb-3">&gt; Flask, HTML, SQLAlchemy, JavaScript</p>
         <ul className="list-disc list-inside space-y-2 text-terminal-gray pl-4">
           <li>Developed a web platform connecting university students with potential employers and internship opportunities.</li>

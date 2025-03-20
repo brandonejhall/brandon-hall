@@ -73,9 +73,10 @@ const ASCIIPortrait: React.FC = () => {
         <div className="text-terminal-green mb-1">Software Engineer</div>
         <div className="text-terminal-gray text-sm mb-2">Kingston, Jamaica</div>
         <div className="text-terminal-gray text-sm max-w-md">
-          Software Engineer specializing in backend development, cloud computing, and scalable systems. 
-          Building high-performance applications with Spring Boot, FastAPI, and PostgreSQL. 
-          AWS Certified Cloud Practitioner focused on creating efficient solutions for complex problems.
+          I'm a Software Engineer specializing in backend development, cloud computing, and scalable systems. 
+          With expertise in Java, Python, and TypeScript, I build high-performance applications using Spring Boot, 
+          FastAPI, and PostgreSQL. Passionate about system design and innovation, I aim to create AI-powered 
+          solutions and blockchain-based financial systems.
         </div>
       </div>
     </div>
